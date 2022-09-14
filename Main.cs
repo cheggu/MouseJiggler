@@ -8,10 +8,24 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using System.Runtime.InteropServices;
+
+
 namespace MouseJiggler
 {
     public partial class Main : Form
     {
+        static uint DOWN = 0x0002;
+        static uint UP = 0x0004;
+        static uint MOUSEEVENTF_ABSOLUTE = 0x8000;
+        static uint MOUSEEVENTF_MOVE = 0x0001;
+        [DllImport("user32.dll")]
+        static extern void mouse_event(uint dwFlags, int dx, int dy, uint dwData, int dwExtraInfo);
+
+        static int SM_CXSCREEN = 0;
+        static int SM_CYSCREEN = 1;
+        [DllImport("user32.dll")]
+        static extern int GetSystemMetrics(int nIndex);
         public Main()
         {
             InitializeComponent();
@@ -40,6 +54,32 @@ namespace MouseJiggler
         {
             btnStart.Enabled = false;
             btnCancel.Enabled = true;
+
+            int x = (1920/2) * 65536 / 1920;
+            int y = (1080/2) * 65536 / 1080;
+
+            mouse_event(MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE, x, y, 0, 0);
+
+            while (btnCancel.Enabled != false)
+            {
+                if (chkJiggleConstant.Checked)
+                {
+
+                }
+                else if (chkJiggleEveryX.Checked)
+                {
+
+                }
+                else if (chkJiggleRandom.Checked)
+                {
+                    
+                }
+                else if (chkJiggleUntil.Checked)
+                {
+
+                }
+            }
+
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
