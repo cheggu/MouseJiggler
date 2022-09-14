@@ -1,0 +1,10 @@
+C:\Users\benja\Desktop\MouseJiggler\bin\Release\MouseJiggler.exe.config
+C:\Users\benja\Desktop\MouseJiggler\bin\Release\MouseJiggler.exe
+C:\Users\benja\Desktop\MouseJiggler\bin\Release\MouseJiggler.pdb
+C:\Users\benja\Desktop\MouseJiggler\obj\Release\MouseJiggler.csprojAssemblyReference.cache
+C:\Users\benja\Desktop\MouseJiggler\obj\Release\MouseJiggler.Main.resources
+C:\Users\benja\Desktop\MouseJiggler\obj\Release\MouseJiggler.Properties.Resources.resources
+C:\Users\benja\Desktop\MouseJiggler\obj\Release\MouseJiggler.csproj.GenerateResource.cache
+C:\Users\benja\Desktop\MouseJiggler\obj\Release\MouseJiggler.csproj.CoreCompileInputs.cache
+C:\Users\benja\Desktop\MouseJiggler\obj\Release\MouseJiggler.exe
+C:\Users\benja\Desktop\MouseJiggler\obj\Release\MouseJiggler.pdb

@@ -51,6 +51,7 @@ namespace MouseJiggler
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.trkJiggleIntensity = new System.Windows.Forms.TrackBar();
             this.lblIntensity = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trkJiggleIntensity)).BeginInit();
             this.SuspendLayout();
@@ -58,7 +59,7 @@ namespace MouseJiggler
             // btnStart
             // 
             this.btnStart.Location = new System.Drawing.Point(260, 519);
-            this.btnStart.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnStart.Margin = new System.Windows.Forms.Padding(4);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(115, 36);
             this.btnStart.TabIndex = 0;
@@ -69,7 +70,7 @@ namespace MouseJiggler
             // btnCancel
             // 
             this.btnCancel.Location = new System.Drawing.Point(167, 519);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(85, 36);
             this.btnCancel.TabIndex = 1;
@@ -81,7 +82,7 @@ namespace MouseJiggler
             // 
             this.chkJiggleConstant.AutoSize = true;
             this.chkJiggleConstant.Location = new System.Drawing.Point(64, 74);
-            this.chkJiggleConstant.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkJiggleConstant.Margin = new System.Windows.Forms.Padding(4);
             this.chkJiggleConstant.Name = "chkJiggleConstant";
             this.chkJiggleConstant.Size = new System.Drawing.Size(127, 21);
             this.chkJiggleConstant.TabIndex = 2;
@@ -93,7 +94,7 @@ namespace MouseJiggler
             // 
             this.chkJiggleEveryX.AutoSize = true;
             this.chkJiggleEveryX.Location = new System.Drawing.Point(64, 102);
-            this.chkJiggleEveryX.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkJiggleEveryX.Margin = new System.Windows.Forms.Padding(4);
             this.chkJiggleEveryX.Name = "chkJiggleEveryX";
             this.chkJiggleEveryX.Size = new System.Drawing.Size(172, 21);
             this.chkJiggleEveryX.TabIndex = 3;
@@ -105,7 +106,7 @@ namespace MouseJiggler
             // 
             this.chkJiggleRandom.AutoSize = true;
             this.chkJiggleRandom.Location = new System.Drawing.Point(64, 130);
-            this.chkJiggleRandom.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkJiggleRandom.Margin = new System.Windows.Forms.Padding(4);
             this.chkJiggleRandom.Name = "chkJiggleRandom";
             this.chkJiggleRandom.Size = new System.Drawing.Size(124, 21);
             this.chkJiggleRandom.TabIndex = 4;
@@ -117,7 +118,7 @@ namespace MouseJiggler
             // 
             this.chkJiggleUntil.AutoSize = true;
             this.chkJiggleUntil.Location = new System.Drawing.Point(64, 159);
-            this.chkJiggleUntil.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkJiggleUntil.Margin = new System.Windows.Forms.Padding(4);
             this.chkJiggleUntil.Name = "chkJiggleUntil";
             this.chkJiggleUntil.Size = new System.Drawing.Size(99, 21);
             this.chkJiggleUntil.TabIndex = 5;
@@ -162,7 +163,7 @@ namespace MouseJiggler
             // 
             this.chkClick.AutoSize = true;
             this.chkClick.Location = new System.Drawing.Point(20, 226);
-            this.chkClick.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkClick.Margin = new System.Windows.Forms.Padding(4);
             this.chkClick.Name = "chkClick";
             this.chkClick.Size = new System.Drawing.Size(59, 21);
             this.chkClick.TabIndex = 9;
@@ -174,7 +175,7 @@ namespace MouseJiggler
             // 
             this.chkClickEvery.AutoSize = true;
             this.chkClickEvery.Location = new System.Drawing.Point(64, 255);
-            this.chkClickEvery.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkClickEvery.Margin = new System.Windows.Forms.Padding(4);
             this.chkClickEvery.Name = "chkClickEvery";
             this.chkClickEvery.Size = new System.Drawing.Size(164, 21);
             this.chkClickEvery.TabIndex = 10;
@@ -186,7 +187,7 @@ namespace MouseJiggler
             // 
             this.chkClickRandom.AutoSize = true;
             this.chkClickRandom.Location = new System.Drawing.Point(64, 283);
-            this.chkClickRandom.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkClickRandom.Margin = new System.Windows.Forms.Padding(4);
             this.chkClickRandom.Name = "chkClickRandom";
             this.chkClickRandom.Size = new System.Drawing.Size(116, 21);
             this.chkClickRandom.TabIndex = 11;
@@ -198,7 +199,7 @@ namespace MouseJiggler
             // 
             this.chkUtilHide.AutoSize = true;
             this.chkUtilHide.Location = new System.Drawing.Point(20, 354);
-            this.chkUtilHide.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkUtilHide.Margin = new System.Windows.Forms.Padding(4);
             this.chkUtilHide.Name = "chkUtilHide";
             this.chkUtilHide.Size = new System.Drawing.Size(215, 21);
             this.chkUtilHide.TabIndex = 12;
@@ -209,7 +210,7 @@ namespace MouseJiggler
             // 
             this.chkUtilHideKeybind.AutoSize = true;
             this.chkUtilHideKeybind.Location = new System.Drawing.Point(20, 383);
-            this.chkUtilHideKeybind.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkUtilHideKeybind.Margin = new System.Windows.Forms.Padding(4);
             this.chkUtilHideKeybind.Name = "chkUtilHideKeybind";
             this.chkUtilHideKeybind.Size = new System.Drawing.Size(203, 21);
             this.chkUtilHideKeybind.TabIndex = 13;
@@ -220,7 +221,7 @@ namespace MouseJiggler
             // 
             this.chkUtilPauseKeybind.AutoSize = true;
             this.chkUtilPauseKeybind.Location = new System.Drawing.Point(20, 411);
-            this.chkUtilPauseKeybind.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkUtilPauseKeybind.Margin = new System.Windows.Forms.Padding(4);
             this.chkUtilPauseKeybind.Name = "chkUtilPauseKeybind";
             this.chkUtilPauseKeybind.Size = new System.Drawing.Size(232, 21);
             this.chkUtilPauseKeybind.TabIndex = 14;
@@ -231,7 +232,7 @@ namespace MouseJiggler
             // 
             this.chkUtilUsableMode.AutoSize = true;
             this.chkUtilUsableMode.Location = new System.Drawing.Point(20, 468);
-            this.chkUtilUsableMode.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkUtilUsableMode.Margin = new System.Windows.Forms.Padding(4);
             this.chkUtilUsableMode.Name = "chkUtilUsableMode";
             this.chkUtilUsableMode.Size = new System.Drawing.Size(194, 21);
             this.chkUtilUsableMode.TabIndex = 15;
@@ -242,7 +243,7 @@ namespace MouseJiggler
             // 
             this.chkJiggle.AutoSize = true;
             this.chkJiggle.Location = new System.Drawing.Point(20, 46);
-            this.chkJiggle.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkJiggle.Margin = new System.Windows.Forms.Padding(4);
             this.chkJiggle.Name = "chkJiggle";
             this.chkJiggle.Size = new System.Drawing.Size(67, 21);
             this.chkJiggle.TabIndex = 17;
@@ -254,7 +255,7 @@ namespace MouseJiggler
             // 
             this.chkClickPassthrough.AutoSize = true;
             this.chkClickPassthrough.Location = new System.Drawing.Point(20, 439);
-            this.chkClickPassthrough.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkClickPassthrough.Margin = new System.Windows.Forms.Padding(4);
             this.chkClickPassthrough.Name = "chkClickPassthrough";
             this.chkClickPassthrough.Size = new System.Drawing.Size(143, 21);
             this.chkClickPassthrough.TabIndex = 18;
@@ -264,6 +265,7 @@ namespace MouseJiggler
             // trkJiggleIntensity
             // 
             this.trkJiggleIntensity.Location = new System.Drawing.Point(12, 519);
+            this.trkJiggleIntensity.Maximum = 100;
             this.trkJiggleIntensity.Name = "trkJiggleIntensity";
             this.trkJiggleIntensity.Size = new System.Drawing.Size(148, 56);
             this.trkJiggleIntensity.TabIndex = 19;
@@ -276,6 +278,11 @@ namespace MouseJiggler
             this.lblIntensity.Size = new System.Drawing.Size(60, 17);
             this.lblIntensity.TabIndex = 20;
             this.lblIntensity.Text = "Intensity";
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // Main
             // 
@@ -302,7 +309,7 @@ namespace MouseJiggler
             this.Controls.Add(this.chkJiggleConstant);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnStart);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Main";
             this.Text = "Mouse Jiggler";
             this.Load += new System.EventHandler(this.Main_Load);
@@ -336,6 +343,7 @@ namespace MouseJiggler
         private System.Windows.Forms.BindingSource bindingSource1;
         private System.Windows.Forms.TrackBar trkJiggleIntensity;
         private System.Windows.Forms.Label lblIntensity;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 

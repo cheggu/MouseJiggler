@@ -9,10 +9,15 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using System.Runtime.InteropServices;
+using System.Threading;
+using System.Diagnostics;
 
 
 namespace MouseJiggler
 {
+
+
+
     public partial class Main : Form
     {
         static uint DOWN = 0x0002;
@@ -26,11 +31,17 @@ namespace MouseJiggler
         static int SM_CYSCREEN = 1;
         [DllImport("user32.dll")]
         static extern int GetSystemMetrics(int nIndex);
+
+        [DllImport("user32.dll")]
+        public static extern short GetAsyncKeyState(int vKey);
+
+        int centerX = 1920 / 2, centerY = 1080 / 2, circleRadius = 50;
+        static int origThreadCount = Process.GetCurrentProcess().Threads.Count;
+
         public Main()
         {
             InitializeComponent();
 
-           
         }
 
         private void Main_Load(object sender, EventArgs e)
@@ -50,42 +61,129 @@ namespace MouseJiggler
 
         }
 
+        public static void mouse_event_circle(int center_x, int center_y, int radius)
+        {
+            int x, y;
+
+            mouse_event(MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE, center_x * 65536 / 1920, center_y * 65536 / 1080, 0, 0);
+
+            for (int i = 0; i < 720; i++)
+            {
+                x = Convert.ToInt32((radius * (Math.Sin(i * (Math.PI / 360.0)))) + center_x);
+                y = Convert.ToInt32((radius * (Math.Cos(i * (Math.PI / 360.0)))) + center_y);
+
+                x = x * 65536 / 1920;
+                y = y * 65536 / 1080;
+
+                mouse_event(MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE, x, y, 0, 0);
+                if (i % 20 == 0)
+                {
+                    Thread.Sleep(1);
+                }
+            }
+        }
+
+        public enum JiggleType
+        {
+            CONSTANT, 
+            EVERYX,
+            RANDOM,
+            UNTIL
+        }
+
+        public static void ThreadProc(Object Type, Object CenterX, Object CenterY, Object Control)
+        {
+            JiggleType type;
+            int center_X, center_Y, control;
+            try
+            {
+                type = (JiggleType)Type;
+                center_X = (int)CenterX;
+                center_Y = (int)CenterY;
+                control = (int)Control;
+        
+
+            }
+            catch (InvalidCastException)
+            {
+                type = JiggleType.CONSTANT;
+                center_X = 1920/2;
+                center_Y = 1080/2;
+                control = 20;
+            }
+
+            if (type == JiggleType.CONSTANT)
+            {
+                while (GetAsyncKeyState(0x1B) != 1) {
+                    mouse_event_circle(center_X, center_Y, control);
+                }
+                Thread.CurrentThread.Abort();
+            }
+        }
+
         private void btnStart_Click(object sender, EventArgs e)
         {
             btnStart.Enabled = false;
             btnCancel.Enabled = true;
 
-            int x = (1920/2) * 65536 / 1920;
-            int y = (1080/2) * 65536 / 1080;
-
-            mouse_event(MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE, x, y, 0, 0);
-
-            while (btnCancel.Enabled != false)
+            if (chkJiggle.Checked)
             {
+                JiggleType curType = JiggleType.CONSTANT;
+
                 if (chkJiggleConstant.Checked)
                 {
-
+                    curType = JiggleType.CONSTANT;
                 }
                 else if (chkJiggleEveryX.Checked)
                 {
-
+                    curType = JiggleType.EVERYX;
                 }
                 else if (chkJiggleRandom.Checked)
                 {
-                    
+                    curType = JiggleType.RANDOM;
                 }
                 else if (chkJiggleUntil.Checked)
                 {
-
+                    curType = JiggleType.UNTIL;
                 }
-            }
+                else
+                {
+                    curType = JiggleType.CONSTANT;
+                }
 
+                
+                var jiggleThread = new Thread(() => ThreadProc(curType, centerX, centerY, circleRadius));
+                jiggleThread.Start();
+            }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
             btnStart.Enabled = true;
             btnCancel.Enabled = false;
+        }
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            int number = Process.GetCurrentProcess().Threads.Count;
+
+            if (btnStart.Enabled)
+            {
+                origThreadCount = number;
+            }
+            else
+            {
+                if (number == origThreadCount + 1)
+                {
+                    btnStart.Enabled = false;
+                    btnCancel.Enabled = true;
+                }
+                else 
+                {
+                    btnStart.Enabled = true;
+                    btnCancel.Enabled = false;
+                }
+            } 
+
         }
 
         private void chkJiggle_CheckedChanged(object sender, EventArgs e)
@@ -214,6 +312,7 @@ namespace MouseJiggler
             }
         }
 
+
         private void chkClickEvery_CheckedChanged(object sender, EventArgs e)
         {
             if (chkClickEvery.Checked)
@@ -241,5 +340,7 @@ namespace MouseJiggler
                 chkClickEvery.Enabled = true;
             }
         }
+
+     
     }
 }
