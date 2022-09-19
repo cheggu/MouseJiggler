@@ -43,6 +43,7 @@ namespace MouseJiggler
             InitializeComponent();
 
         }
+        //https://coolors.co/edffec-61e786-5a5766-48435c-9792e3
 
         private void Main_Load(object sender, EventArgs e)
         {
@@ -58,6 +59,12 @@ namespace MouseJiggler
             //click
             chkClickEvery.Enabled = false;
             chkClickRandom.Enabled = false;
+
+            cboJiggleEveryOptions.SelectedIndex = 1;
+            cboJiggleEveryOptions.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboJiggleEveryOptions.Enabled = false;
+
+            dtpJiggleUntil.Enabled = false;
 
         }
 
@@ -119,7 +126,11 @@ namespace MouseJiggler
                 }
                 Thread.CurrentThread.Abort();
             }
+<<<<<<< HEAD
             if (type == JiggleType.EVERYX)
+=======
+            else if (type == JiggleType.EVERYX)
+>>>>>>> 680b66cb27e59657f8eba4714e8e23996427b61a
             {
 
             }
@@ -265,12 +276,18 @@ namespace MouseJiggler
                 chkJiggleRandom.Enabled = false;
                 chkJiggleUntil.Enabled = false;
 
+                mskEveryXMinutes.Enabled = true;
+                cboJiggleEveryOptions.Enabled = true;
+
             }
             else
             {
                 chkJiggleConstant.Enabled = true;
                 chkJiggleRandom.Enabled = true;
                 chkJiggleUntil.Enabled = true;
+
+                mskEveryXMinutes.Enabled = false;
+                cboJiggleEveryOptions.Enabled = false;
             }
         }
 
@@ -307,15 +324,26 @@ namespace MouseJiggler
                 chkJiggleEveryX.Enabled = false;
                 chkJiggleRandom.Enabled = false;
 
+                dtpJiggleUntil.Enabled = true;
+
             }
             else
             {
                 chkJiggleConstant.Enabled = true;
                 chkJiggleEveryX.Enabled = true;
                 chkJiggleRandom.Enabled = true;
+
+                dtpJiggleUntil.Enabled = false;
             }
         }
 
+        private void dtpJiggleUntil_ValueChanged(object sender, EventArgs e)
+        {
+            if (dtpJiggleUntil.Value < DateTime.Today)
+            {
+                dtpJiggleUntil.Value = DateTime.Today;
+            }
+        }
 
         private void chkClickEvery_CheckedChanged(object sender, EventArgs e)
         {
