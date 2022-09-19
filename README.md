@@ -13,7 +13,7 @@ This simulates mouse movements and clicks. The user can change various variables
 
 Here's what it looks like right now:
 
-![Output sample](https://imgur.com/a/AIFBLUe)
+![Output sample](https://i.imgur.com/trHTFWb.gif)
 
 I plan on working on this a lot, so stay tuned!
 
