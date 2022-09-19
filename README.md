@@ -3,6 +3,8 @@ Automated Mouse Moving Software
 
 This simulates mouse movements and clicks. The user can change various variables to simulate different inputs. 
 
+I would advise <b>against</b> using this for games, anticheats don't like mouse_event!
+
 <b>Features</b>
 <ul>
   <li> Constant, Every, Random, and Until Jiggle settings </li>
