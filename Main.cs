@@ -39,6 +39,7 @@ namespace MouseJiggler
         static int origThreadCount = Process.GetCurrentProcess().Threads.Count;
 
         private List<String> SharedThreadData = new List<string>();
+        private List<Thread> threadList = new List<Thread>();
 
         public Main()
         {
@@ -50,6 +51,8 @@ namespace MouseJiggler
         private void Main_Load(object sender, EventArgs e)
         {
             btnCancel.Enabled = false;
+
+            lblHowToCancel.Visible = false;
 
             //jiggle
             chkJiggleConstant.Enabled = false;
@@ -212,6 +215,7 @@ namespace MouseJiggler
         {
             btnStart.Enabled = false;
             btnCancel.Enabled = true;
+            lblHowToCancel.Visible = true;
             Object control = 0;
             if (chkJiggle.Checked)
             {
@@ -246,14 +250,10 @@ namespace MouseJiggler
 
                 var jiggleThread = new Thread(() => ThreadProc(curType, centerX, centerY, control, SharedThreadData));
                 jiggleThread.Start();
+                threadList.Add(jiggleThread);
             }
         }
-
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            btnStart.Enabled = true;
-            btnCancel.Enabled = false;
-        }
+        
         private void timer1_Tick(object sender, EventArgs e)
         {
             if (SharedThreadData.Count > 0)
@@ -269,6 +269,27 @@ namespace MouseJiggler
                 btnStart.Enabled = true;
                 btnCancel.Enabled = false;
                 SharedThreadData.Clear();
+                threadList.Clear();
+                lblHowToCancel.Visible = false;
+            }
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            btnStart.Enabled = true;
+            btnCancel.Enabled = false;
+
+            lblHowToCancel.Visible = false;
+
+            SharedThreadData.Clear();
+            try
+            {
+                threadList.ElementAt(0).Abort();
+                threadList.Clear();
+            }
+            catch (Exception o)
+            {
+                MessageBox.Show(o.ToString());
             }
         }
 
@@ -448,7 +469,5 @@ namespace MouseJiggler
                 chkClickEvery.Enabled = true;
             }
         }
-
-     
     }
 }

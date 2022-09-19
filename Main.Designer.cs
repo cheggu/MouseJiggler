@@ -55,6 +55,7 @@ namespace MouseJiggler
             this.mskEveryXMinutes = new System.Windows.Forms.MaskedTextBox();
             this.cboJiggleEveryOptions = new System.Windows.Forms.ComboBox();
             this.dtpJiggleUntil = new System.Windows.Forms.DateTimePicker();
+            this.lblHowToCancel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trkJiggleIntensity)).BeginInit();
             this.SuspendLayout();
@@ -360,12 +361,27 @@ namespace MouseJiggler
             this.dtpJiggleUntil.TabIndex = 23;
             this.dtpJiggleUntil.ValueChanged += new System.EventHandler(this.dtpJiggleUntil_ValueChanged);
             // 
+            // lblHowToCancel
+            // 
+            this.lblHowToCancel.AutoSize = true;
+            this.lblHowToCancel.Font = new System.Drawing.Font("Candara", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHowToCancel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(67)))), ((int)(((byte)(92)))));
+            this.lblHowToCancel.Location = new System.Drawing.Point(170, 391);
+            this.lblHowToCancel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblHowToCancel.Name = "lblHowToCancel";
+            this.lblHowToCancel.Size = new System.Drawing.Size(112, 28);
+            this.lblHowToCancel.TabIndex = 24;
+            this.lblHowToCancel.Text = "ACTIVE!\r\nPress \'ESC\' to cancel";
+            this.lblHowToCancel.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.lblHowToCancel.Visible = false;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(239)))), ((int)(((byte)(245)))));
             this.ClientSize = new System.Drawing.Size(293, 463);
+            this.Controls.Add(this.lblHowToCancel);
             this.Controls.Add(this.dtpJiggleUntil);
             this.Controls.Add(this.cboJiggleEveryOptions);
             this.Controls.Add(this.mskEveryXMinutes);
@@ -428,6 +444,7 @@ namespace MouseJiggler
         private System.Windows.Forms.MaskedTextBox mskEveryXMinutes;
         private System.Windows.Forms.ComboBox cboJiggleEveryOptions;
         private System.Windows.Forms.DateTimePicker dtpJiggleUntil;
+        private System.Windows.Forms.Label lblHowToCancel;
     }
 }
 
