@@ -119,6 +119,10 @@ namespace MouseJiggler
                 }
                 Thread.CurrentThread.Abort();
             }
+            if (type == JiggleType.EVERYX)
+            {
+
+            }
         }
 
         private void btnStart_Click(object sender, EventArgs e)
