@@ -19,4 +19,4 @@ Here's what it looks like right now:
 
 I plan on working on this a lot, so stay tuned!
 
-This was accomplished using C# WinForms.
+This was accomplished using C# WinForms and a lot of PInvoking.
